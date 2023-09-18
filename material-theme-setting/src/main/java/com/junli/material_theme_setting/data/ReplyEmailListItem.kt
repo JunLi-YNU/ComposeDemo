@@ -17,12 +17,19 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.junli.material_theme_setting.R
 import com.junli.material_theme_setting.ReplyProfileImage
 
 @Composable
@@ -47,6 +54,9 @@ fun ReplyEmailListItem(
                 .fillMaxSize()
                 .padding(20.dp)
         ) {
+            var state by rememberSaveable {
+                mutableStateOf(email.isStarred)
+            }
             Row(
                 modifier = Modifier.fillMaxWidth()
             ) {
@@ -66,10 +76,14 @@ fun ReplyEmailListItem(
                     )
                 }
                 IconButton(
-                    onClick = { /*TODO*/ }, modifier = Modifier.clip(CircleShape)
+                    onClick = { state = !state },
+                    modifier = Modifier.clip(CircleShape)
                 ) {
                     Icon(
-                        imageVector = Icons.Default.Star, contentDescription = "Favorite"
+                        imageVector = (if (state) Icons.Default.Star else ImageVector.vectorResource(
+                            R.drawable.baseline_star_border_24
+                        )),
+                        contentDescription = "Favorite"
                     )
                 }
             }

@@ -15,7 +15,7 @@ object LocalEmailsDataProvider {
               
               Your alpha testers will be automatically notified. If you'd rather send them a link directly, go to your Google Play Console and follow the instructions for obtaining an open alpha testing link.
             """.trimIndent(),
-            isStarred = true,
+            isStarred = false,
             mailbox = MailboxType.TRASH,
             createdAt = "3 hours ago",
         ),

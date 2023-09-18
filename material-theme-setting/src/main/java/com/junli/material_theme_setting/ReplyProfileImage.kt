@@ -20,5 +20,6 @@ fun ReplyProfileImage(
             .size(40.dp)
             .clip(CircleShape),
         painter = painterResource(id = drawableResource),
-        contentDescription =description )
+        contentDescription = description
+    )
 }

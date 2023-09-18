@@ -70,4 +70,6 @@ dependencies {
     debugImplementation(libs.ui.test.manifest)
 
     implementation(libs.material3)
+    implementation("androidx.compose.material:material-icons-extended")
+
 }

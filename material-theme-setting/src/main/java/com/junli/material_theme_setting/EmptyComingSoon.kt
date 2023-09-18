@@ -14,25 +14,27 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun EmptyComingSoon (
+fun EmptyComingSoon(
     modifier: Modifier = Modifier
-){
+) {
     Column(
         modifier = modifier.fillMaxSize(),
-        verticalArrangement =  Arrangement.Center,
+        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
-    ){
+    ) {
         Text(
             modifier = Modifier.padding(8.dp),
             text = stringResource(id = R.string.empty_screen_title),
             style = MaterialTheme.typography.bodySmall,
             textAlign = TextAlign.Center,
-            color = MaterialTheme.colorScheme.primary)
+            color = MaterialTheme.colorScheme.primary
+        )
         Text(
             modifier = Modifier.padding(horizontal = 8.dp),
             text = stringResource(id = R.string.empty_screen_subtitle),
             style = MaterialTheme.typography.bodySmall,
             textAlign = TextAlign.Center,
-            color = MaterialTheme.colorScheme.outline)
+            color = MaterialTheme.colorScheme.outline
+        )
     }
 }

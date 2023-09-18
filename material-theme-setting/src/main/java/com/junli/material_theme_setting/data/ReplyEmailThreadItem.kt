@@ -15,9 +15,15 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import com.junli.material_theme_setting.R
 import com.junli.material_theme_setting.ReplyProfileImage
@@ -35,6 +41,9 @@ fun ReplyEmailThreadItem(
             .padding(20.dp)
     ) {
         Row(modifier = Modifier.fillMaxWidth()) {
+            var state by rememberSaveable {
+                mutableStateOf(email.isStarred)
+            }
             ReplyProfileImage(
                 drawableResource = email.sender.avatar,
                 description = email.sender.fullName
@@ -55,13 +64,13 @@ fun ReplyEmailThreadItem(
                 )
             }
             IconButton(
-                onClick = { /*TODO*/ },
+                onClick = { state = !state },
                 modifier = Modifier
                     .clip(CircleShape)
                     .background(MaterialTheme.colorScheme.surface)
             ) {
                 Icon(
-                    imageVector = if (email.isStarred) Icons.Default.Star else Icons.Default.Star,
+                    imageVector = (if (state) Icons.Default.Star else ImageVector.vectorResource(R.drawable.baseline_star_border_24)),
                     contentDescription = "Favorite"
                 )
 
